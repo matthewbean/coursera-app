@@ -37,7 +37,7 @@ function Form() {
       name: null,
       phoneNumber: null,
     },
-    onSubmit: (values) => submit("test.com", values),
+    onSubmit: (data) => submit("test.com", data),
     validationSchema: Yup.object({
       time: Yup.string().required("Required"),
       numberOfGuests: Yup.string().required("Required"),
@@ -58,19 +58,22 @@ function Form() {
     console.log(values);
   }, [values]);
   return (
-    <VStack w="1024px" p={32} alignItems="flex-start">
-      <Heading as="h1" id="contactme-section">
-        Make a Reservation
-      </Heading>
+    <VStack p={10} alignItems="center" background="#FBDABB">
       <Box p={6} rounded="md" w="%">
         {values && (
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} style={{ background: "white" }}>
+            <Heading as="h1" id="reservation-section">
+              Make a Reservation
+            </Heading>
             <VStack spacing={4}>
               <FormControl
                 isInvalid={touched.calendar && errors.calendar ? true : false}
               >
-                <FormLabel htmlFor="calendar">Date</FormLabel>
+                <FormLabel fontSize="lg" fontWeight="bold" htmlFor="calendar">
+                  Date
+                </FormLabel>
                 <DatePicker
+                  className="calendar-box"
                   selected={values.calendar}
                   {...formik.getFieldProps("calendar")}
                   onChange={(date) => formik.setFieldValue("calendar", date)}
@@ -82,7 +85,9 @@ function Form() {
               <FormControl
                 isInvalid={touched.time && errors.time ? true : false}
               >
-                <FormLabel htmlFor="time">Time</FormLabel>
+                <FormLabel fontSize="lg" fontWeight="bold" htmlFor="time">
+                  Time
+                </FormLabel>
                 <Input
                   {...formik.getFieldProps("time")}
                   id="time"
@@ -96,7 +101,13 @@ function Form() {
                   touched.numberOfGuests && errors.numberOfGuests ? true : false
                 }
               >
-                <FormLabel htmlFor="numberOfGuests">Number of Guests</FormLabel>
+                <FormLabel
+                  fontSize="lg"
+                  fontWeight="bold"
+                  htmlFor="numberOfGuests"
+                >
+                  Number of Guests
+                </FormLabel>
                 <Input
                   {...formik.getFieldProps("numberOfGuests")}
                   id="numberOfGuests"
@@ -108,7 +119,9 @@ function Form() {
               <FormControl
                 isInvalid={touched.name && errors.name ? true : false}
               >
-                <FormLabel htmlFor="name">Name</FormLabel>
+                <FormLabel fontSize="lg" fontWeight="bold" htmlFor="name">
+                  Name
+                </FormLabel>
                 <Input
                   {...formik.getFieldProps("name")}
                   id="name"
@@ -121,7 +134,13 @@ function Form() {
                   touched.phoneNumber && errors.phoneNumber ? true : false
                 }
               >
-                <FormLabel htmlFor="phoneNumber">Phone Number</FormLabel>
+                <FormLabel
+                  fontSize="lg"
+                  fontWeight="bold"
+                  htmlFor="phoneNumber"
+                >
+                  Phone Number
+                </FormLabel>
                 <Input
                   {...formik.getFieldProps("phoneNumber")}
                   id="phoneNumber"
@@ -130,8 +149,14 @@ function Form() {
                 />
                 <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
               </FormControl>
-              <Button type="submit" colorScheme="purple" width="full">
-                {isLoading ? <Spinner /> : "Submit"}
+              <Button
+                type="submit"
+                width="full"
+                fontSize="lg"
+                fontWeight="bold"
+                style={{ background: "#495E57", color: "#fff" }}
+              >
+                {isLoading ? <Spinner /> : "Make Reservation"}
               </Button>
             </VStack>
           </form>
