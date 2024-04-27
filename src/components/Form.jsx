@@ -73,6 +73,7 @@ function Form() {
                   Date
                 </FormLabel>
                 <DatePicker
+                  aria-label="date of reservation"
                   className="calendar-box"
                   selected={values.calendar}
                   {...formik.getFieldProps("calendar")}
@@ -89,10 +90,12 @@ function Form() {
                   Time
                 </FormLabel>
                 <Input
+                  aria-label="time of reservation"
                   {...formik.getFieldProps("time")}
                   id="time"
                   name="time"
                   type="time"
+                  placeHolder="Time"
                 />
                 <FormErrorMessage>{errors.time}</FormErrorMessage>
               </FormControl>
@@ -109,10 +112,12 @@ function Form() {
                   Number of Guests
                 </FormLabel>
                 <Input
+                  aria-label="number of guests"
                   {...formik.getFieldProps("numberOfGuests")}
                   id="numberOfGuests"
                   name="numberOfGuests"
                   type="number"
+                  placeholder="Number of Guests"
                 />
                 <FormErrorMessage>{errors.numberOfGuests}</FormErrorMessage>
               </FormControl>
@@ -123,9 +128,11 @@ function Form() {
                   Name
                 </FormLabel>
                 <Input
+                  aria-label="your name"
                   {...formik.getFieldProps("name")}
                   id="name"
                   name="name"
+                  placeholder="Name"
                 />
                 <FormErrorMessage>{errors.name}</FormErrorMessage>
               </FormControl>
@@ -142,14 +149,17 @@ function Form() {
                   Phone Number
                 </FormLabel>
                 <Input
+                  aria-label="your phone number"
                   {...formik.getFieldProps("phoneNumber")}
                   id="phoneNumber"
                   name="phoneNumber"
                   type="tel"
+                  placeHolder="Phone Number"
                 />
                 <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
               </FormControl>
               <Button
+                aria-label="submit form"
                 type="submit"
                 width="full"
                 fontSize="lg"
